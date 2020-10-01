@@ -3,7 +3,7 @@ const express = require('express')
 const mysql = require('mysql');
 const path = require('path');
 const dotenv = require('dotenv');
-
+const cors = require('cors');
 dotenv.config()
 const app = express();
 const db = mysql.createConnection({
@@ -12,12 +12,12 @@ const db = mysql.createConnection({
     password: process.env.DATBASE_PASSWORD,
     database: process.env.DATABASE
 })
-
+app.use(cors())
 db.connect( (err) => {
     if(err) {
         console.log(err)
     }else {
-        console.log('Mysql connecte')
+        console.log('Mysql connected')
     }
 })
 

@@ -12,16 +12,16 @@ const registerValidation = data => {
             .email(),
         password: Joi.string()
             .min(6)
+            .required(),
+        role: Joi.string()
             .required()
+        
     };
     return Joi.validate(data, schema);
 }
 
 const loginValidation = data => {
     const schema = {
-        name: Joi.string()
-            .min(6)
-            .required(),
         email: Joi.string()
             .min(6)
             .required()
